@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jokesapp.R;
+import com.example.jokesapp.model.Joke;
 
 import androidx.annotation.NonNull;
 
@@ -17,11 +18,14 @@ public class CardsDataAdapter extends ArrayAdapter<String> {
 
     Context mContext;
     private boolean isClicked = true;
+    private JokeLikeListener jokeLikeListener;
+    private Joke mJoke;
 
     public CardsDataAdapter(@NonNull Context context, int resource) {
         super(context, resource);
-
         mContext = context;
+
+        jokeLikeListener = (JokeLikeListener) context;
     }
 
     @Override
@@ -41,10 +45,18 @@ public class CardsDataAdapter extends ArrayAdapter<String> {
 
                     likeButton.setImageResource(R.drawable.like_filled);
                     isClicked = false;
+
+                    mJoke = new Joke(getItem(position),true);
+                    jokeLikeListener.jokeIsLiked(mJoke);
+
+
                 }else {
 
                     likeButton.setImageResource(R.drawable.like_empty);
                     isClicked = true;
+
+                    mJoke = new Joke(getItem(position),false);
+                    jokeLikeListener.jokeIsLiked(mJoke);
                 }
 
             }

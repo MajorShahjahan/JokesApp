@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.jokesapp.controller.CardsDataAdapter;
+import com.example.jokesapp.controller.JokeLikeListener;
 import com.example.jokesapp.model.Joke;
+import com.example.jokesapp.model.JokeManager;
 import com.wenchao.cardstack.CardStack;
 
 import org.json.JSONArray;
@@ -18,16 +20,19 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements CardStack.CardEventListener {
+public class MainActivity extends AppCompatActivity implements CardStack.CardEventListener, JokeLikeListener {
 
     CardStack mCardStack;
     CardsDataAdapter mCardAdapter;
     private List<Joke> allJokes = new ArrayList<>();
+    private JokeManager mJokeManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mJokeManager = new JokeManager(this);
 
         Log.i("jokes",loadJSONFromAsset());
         mCardStack = findViewById(R.id.container);
@@ -35,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements CardStack.CardEve
         mCardStack.setContentResource(R.layout.joke_card);
         mCardStack.setStackMargin(20);
 
-        mCardAdapter = new CardsDataAdapter(getApplicationContext(),0);
+        mCardAdapter = new CardsDataAdapter(this,0);
        try {
 
            JSONObject rootObject = new JSONObject(loadJSONFromAsset());
@@ -150,6 +155,19 @@ public class MainActivity extends AppCompatActivity implements CardStack.CardEve
 
     @Override
     public void topCardTapped() {
+
+    }
+
+    @Override
+    public void jokeIsLiked(Joke joke) {
+
+        if (joke.isJokeLiked()){
+
+            mJokeManager.saveJoke(joke);
+        }else {
+
+            mJokeManager.deleteJoke(joke);
+        }
 
     }
 }
