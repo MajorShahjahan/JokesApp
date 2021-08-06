@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/49176/AndroidStudioProjects/JokesApp/app/src/main/res/layout/activity_fav_joke.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/49176/AndroidStudioProjects/JokesApp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/49176/AndroidStudioProjects/JokesApp/app/src/main/res/layout/fav_joke_item.xml" value="0.1" />
+        <entry key="..\:/Users/49176/AndroidStudioProjects/JokesApp/app/src/main/res/layout/fragment_fav_jokes.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/49176/AndroidStudioProjects/JokesApp/app/src/main/res/layout/joke_card.xml" value="0.25416666666666665" />
       </map>
     </option>

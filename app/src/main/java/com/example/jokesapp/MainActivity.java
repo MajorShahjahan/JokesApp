@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements CardStack.CardEve
             mJokeManager.saveJoke(joke);
         }else {
 
-            mJokeManager.deleteJoke(joke);
+            mJokeManager.deleteJoke(joke );
         }
 
     }
