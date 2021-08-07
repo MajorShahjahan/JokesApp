@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.FavJokesFragment">
+    tools:context=".fragments.FavJokesFragment"
+    android:id="@+id/Fav_Jokes_Container">
 
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/rv"
